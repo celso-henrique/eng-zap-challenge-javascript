@@ -2,27 +2,32 @@
   "name": "eng-zap-challenge-javascript",
   "version": "1.0.0",
   "description": "Zap engineering challenge",
-  "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
+    "test": "jest  --no-watchman",
     "lint": "./node_modules/.bin/eslint src/*.jsx",
-    "prepush": "npm run lint"
+    "prepush": "npm run lint && npm run test"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/celso-henrique/eng-zap-challenge-javascript.git"
   },
   "author": "Celso Henrique",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/celso-henrique/eng-zap-challenge-javascript/issues"
   },
   "homepage": "https://github.com/celso-henrique/eng-zap-challenge-javascript#readme",
+  "jest": {
+    "testRegex": "(.*\\.(test|spec))\\.(js|jsx)$",
+    "moduleFileExtensions": ["js", "json", "jsx"]
+  },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@testing-library/react": "^9.1.2",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
@@ -33,6 +38,7 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^3.0.3",
+    "jest": "^24.9.0",
     "prop-types": "^15.7.2",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.6",
