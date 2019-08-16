@@ -1,5 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import useThunkReducer from 'react-hook-thunk-reducer'
 
-const App = () => <h1>App loaded</h1>
+import propertiesReducer, {
+  fetchProperties,
+  propertiesInitialState
+} from './store/properties'
+
+const App = () => {
+  const [{ fetched, data }, dispatch] = useThunkReducer(
+    propertiesReducer,
+    propertiesInitialState
+  )
+
+  useEffect(() => {
+    dispatch(fetchProperties())
+  }, [])
+
+  return <h1>App loaded</h1>
+}
 
 export default App
