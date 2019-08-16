@@ -1,6 +1,5 @@
 import propertiesReducer, {
   propertiesTypes,
-  fetchProperties,
   propertiesInitialState
 } from './properties'
 

@@ -7,7 +7,7 @@ import propertiesReducer, {
 } from './store/properties'
 
 const App = () => {
-  const [{ fetched, data }, dispatch] = useThunkReducer(
+  const [, dispatch] = useThunkReducer(
     propertiesReducer,
     propertiesInitialState
   )

@@ -31,14 +31,12 @@ const propertiesReducer = (state, action) => {
         error: false,
         data: processProperties(action.data)
       }
-      break
     case propertiesTypes.PROPERTIES_ERROR:
       return {
         fetched: false,
         error: true,
         data: []
       }
-      break
     default:
       throw new Error('Unexpected action')
   }
