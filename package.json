@@ -5,8 +5,8 @@
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
-    "test": "jest  --no-watchman",
-    "lint": "./node_modules/.bin/eslint src/*.jsx",
+    "test": "jest --no-watchman",
+    "lint": "eslint src/*.jsx",
     "prepush": "npm run lint && npm run test"
   },
   "repository": {
