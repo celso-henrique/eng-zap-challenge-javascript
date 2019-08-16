@@ -18,6 +18,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    semi: 0
+    semi: 0,
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }]
   }
 }

@@ -6,7 +6,7 @@
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
     "test": "jest --no-watchman",
-    "lint": "eslint src/*.jsx",
+    "lint": "eslint src/*.js",
     "prepush": "npm run lint && npm run test"
   },
   "repository": {
