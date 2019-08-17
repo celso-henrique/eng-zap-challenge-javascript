@@ -15,11 +15,9 @@ const App = () => {
     propertiesInitialState
   )
 
-  const RenderHome = useCallback(props => <Home data={data} {...props} />, [
-    data
-  ])
+  const RenderHome = useCallback(() => <Home data={data} />, [data])
   const RenderDetails = useCallback(
-    props => <Details data={data} {...props} />,
+    ({ match }) => <Details data={data} match={match} />,
     [data]
   )
 
