@@ -7,9 +7,14 @@ describe('Properties duck', () => {
   describe('Properties reducer', () => {
     it('filter properties with lat and lon equal to zero', () => {
       const data = [
-        { id: 1, address: { geoLocation: { location: { lat: 0, lon: 0 } } } },
+        {
+          id: 1,
+          pricingInfos: {},
+          address: { geoLocation: { location: { lat: 0, lon: 0 } } }
+        },
         {
           id: 2,
+          pricingInfos: {},
           address: { geoLocation: { location: { lat: 100, lon: 100 } } }
         }
       ]
