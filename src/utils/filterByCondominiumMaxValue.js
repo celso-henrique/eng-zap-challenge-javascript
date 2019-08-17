@@ -1,3 +1,5 @@
+import { isNaN } from 'lodash'
+
 const filterByCondominiumMaxValue = maxValuePercentage => properties => {
   const processed = properties.filter(({ pricingInfos }) => {
     const { businessType, price, monthlyCondoFee } = pricingInfos
