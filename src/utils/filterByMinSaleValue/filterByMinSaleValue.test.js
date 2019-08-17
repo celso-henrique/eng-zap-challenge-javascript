@@ -76,7 +76,7 @@ describe('Filter by minimum sale value', () => {
     expect(processed.length).toEqual(2)
   })
 
-  it('does not filter properties for rental', () => {
+  it('does not filter properties for rent', () => {
     const data = [
       {
         pricingInfos: { businessType: 'RENTAL', price: '350000' },

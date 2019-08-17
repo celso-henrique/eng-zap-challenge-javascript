@@ -7,6 +7,7 @@ import {
   filterByCondominiumMaxValue,
   filterByMinRentalValue,
   filterByMinSaleValue,
+  filterByMaxSaleValue,
   filterByMaxRentalValue
 } from '../utils'
 
@@ -28,6 +29,7 @@ const processVivaRealIds = flow([
   filterInvalidLatLon,
   filterByCondominiumMaxValue(30),
   filterByMaxRentalValue(4000, 50),
+  filterByMaxSaleValue(700000),
   properties => properties.map(({ id }) => id)
 ])
 

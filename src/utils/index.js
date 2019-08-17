@@ -3,6 +3,7 @@ import filterByUsableAreaMinValue from './filterByUsableAreaMinValue'
 import filterByCondominiumMaxValue from './filterByCondominiumMaxValue'
 import filterByMinRentalValue from './filterByMinRentalValue'
 import filterByMinSaleValue from './filterByMinSaleValue'
+import filterByMaxSaleValue from './filterByMaxSaleValue'
 import filterByMaxRentalValue from './filterByMaxRentalValue'
 import isInBoundingBox from './isInBoundingBox'
 
@@ -12,6 +13,7 @@ export {
   filterByCondominiumMaxValue,
   filterByMinRentalValue,
   filterByMinSaleValue,
+  filterByMaxSaleValue,
   filterByMaxRentalValue,
   isInBoundingBox
 }
