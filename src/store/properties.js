@@ -1,4 +1,7 @@
 import axios from 'axios'
+import { flow, keyBy } from 'lodash'
+
+import filterInvalidLatLon from '../utils/filterInvalidLatLon'
 
 // Action types
 export const propertiesTypes = {
@@ -10,18 +13,17 @@ export const propertiesTypes = {
 export const propertiesInitialState = {
   fetched: false,
   error: false,
-  data: []
+  data: {
+    byId: {},
+    zapIds: [],
+    vivaRealIds: []
+  }
 }
 
-const processProperties = data => {
-  const processed = data.filter(property => {
-    const { lon, lat } = property.address.geoLocation.location
-
-    return lon !== 0 && lat !== 0
-  })
-
-  return processed
-}
+const processAllProperties = flow([
+  filterInvalidLatLon,
+  properties => keyBy(properties, 'id')
+])
 
 const propertiesReducer = (state, action) => {
   switch (action.type) {
@@ -29,13 +31,16 @@ const propertiesReducer = (state, action) => {
       return {
         fetched: true,
         error: false,
-        data: processProperties(action.data)
+        data: {
+          byId: processAllProperties(action.data),
+          zapIds: [],
+          vivaRealIds: []
+        }
       }
     case propertiesTypes.PROPERTIES_ERROR:
       return {
-        fetched: false,
-        error: true,
-        data: []
+        ...propertiesInitialState,
+        error: true
       }
     default:
       throw new Error('Unexpected action')
@@ -44,22 +49,21 @@ const propertiesReducer = (state, action) => {
 
 // Action creators
 export const fetchProperties = () => dispatch => {
-  try {
-    axios
-      .get(
-        'http://grupozap-code-challenge.s3-website-us-east-1.amazonaws.com/sources/source-1.json'
-      )
-      .then(data => {
-        dispatch({
-          type: propertiesTypes.PROPERTIES_LOADED,
-          data
-        })
+  axios
+    .get(
+      'http://grupozap-code-challenge.s3-website-us-east-1.amazonaws.com/sources/source-1.json'
+    )
+    .then(({ data }) => {
+      dispatch({
+        type: propertiesTypes.PROPERTIES_LOADED,
+        data
       })
-  } catch (error) {
-    dispatch({
-      type: propertiesTypes.PROPERTIES_ERROR
     })
-  }
+    .catch(() => {
+      dispatch({
+        type: propertiesTypes.PROPERTIES_ERROR
+      })
+    })
 }
 
 export default propertiesReducer

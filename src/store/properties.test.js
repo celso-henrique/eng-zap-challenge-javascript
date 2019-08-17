@@ -7,8 +7,11 @@ describe('Properties duck', () => {
   describe('Properties reducer', () => {
     it('filter properties with lat and lon equal to zero', () => {
       const data = [
-        { address: { geoLocation: { location: { lat: 0, lon: 0 } } } },
-        { address: { geoLocation: { location: { lat: 100, lon: 100 } } } }
+        { id: 1, address: { geoLocation: { location: { lat: 0, lon: 0 } } } },
+        {
+          id: 2,
+          address: { geoLocation: { location: { lat: 100, lon: 100 } } }
+        }
       ]
 
       const result = propertiesReducer(propertiesInitialState, {
@@ -16,7 +19,7 @@ describe('Properties duck', () => {
         data
       })
 
-      expect(result.data.length).toEqual(1)
+      expect(Object.keys(result.data.byId).length).toEqual(1)
     })
 
     it(`changes the state to error when receives "${
