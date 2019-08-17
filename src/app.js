@@ -15,8 +15,13 @@ const App = () => {
     propertiesInitialState
   )
 
-  const RenderHome = useCallback(props => <Home data={data} />, [data])
-  const RenderDetails = useCallback(props => <Details data={data} />, [data])
+  const RenderHome = useCallback(props => <Home data={data} {...props} />, [
+    data
+  ])
+  const RenderDetails = useCallback(
+    props => <Details data={data} {...props} />,
+    [data]
+  )
 
   useEffect(() => {
     dispatch(fetchProperties())
