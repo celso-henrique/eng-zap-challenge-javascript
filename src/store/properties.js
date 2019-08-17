@@ -12,6 +12,8 @@ import {
 } from '../utils'
 
 // Helpers
+const mapToId = properties => properties.map(({ id }) => id)
+
 const processAllProperties = flow([
   filterInvalidLatLon,
   properties => keyBy(properties, 'id')
@@ -22,7 +24,7 @@ const processZapIds = flow([
   filterByUsableAreaMinValue(3500),
   filterByMinRentalValue(3500),
   filterByMinSaleValue(600000, 10),
-  properties => properties.map(({ id }) => id)
+  mapToId
 ])
 
 const processVivaRealIds = flow([
@@ -30,7 +32,7 @@ const processVivaRealIds = flow([
   filterByCondominiumMaxValue(30),
   filterByMaxRentalValue(4000, 50),
   filterByMaxSaleValue(700000),
-  properties => properties.map(({ id }) => id)
+  mapToId
 ])
 
 // Action types

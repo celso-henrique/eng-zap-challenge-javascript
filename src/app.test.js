@@ -7,6 +7,6 @@ describe('App', () => {
   it('renders without crash', () => {
     const { getByText } = render(<App />)
 
-    expect(getByText('App loaded')).toBeTruthy()
+    expect(getByText('Home page')).toBeTruthy()
   })
 })

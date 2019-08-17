@@ -1,13 +1,13 @@
 const filterByMaxSaleValue = maxValue => properties => {
-  const processed = properties.filter(property => {
-    const { businessType, price } = property.pricingInfos
+  const processed = properties.filter(
+    ({ pricingInfos: { businessType, price } }) => {
+      if (businessType !== 'SALE') {
+        return true
+      }
 
-    if (businessType !== 'SALE') {
-      return true
+      return parseFloat(price) <= maxValue
     }
-
-    return parseFloat(price) <= maxValue
-  })
+  )
 
   return processed
 }

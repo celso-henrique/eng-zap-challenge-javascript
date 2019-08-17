@@ -1,13 +1,13 @@
 const filterByMinRentalValue = minValue => properties => {
-  const processed = properties.filter(property => {
-    const { businessType, price } = property.pricingInfos
+  const processed = properties.filter(
+    ({ pricingInfos: { businessType, price } }) => {
+      if (businessType !== 'RENTAL') {
+        return true
+      }
 
-    if (businessType !== 'RENTAL') {
-      return true
+      return parseFloat(price) >= minValue
     }
-
-    return parseFloat(price) >= minValue
-  })
+  )
 
   return processed
 }
