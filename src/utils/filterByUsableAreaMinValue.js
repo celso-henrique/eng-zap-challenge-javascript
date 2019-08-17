@@ -7,11 +7,7 @@ const filterByUsableAreaMinValue = minValue => properties => {
       return true
     }
 
-    if (usableAreas === 0 || priceByUsableArea < minValue) {
-      return false
-    }
-
-    return true
+    return usableAreas !== 0 && priceByUsableArea > minValue
   })
 
   return processed

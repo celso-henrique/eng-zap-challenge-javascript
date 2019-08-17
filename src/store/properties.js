@@ -1,14 +1,11 @@
 import axios from 'axios'
 import { flow, keyBy } from 'lodash'
 
-import filterInvalidLatLon from '../utils/filterInvalidLatLon'
-import filterByUsableAreaMinValue from '../utils/filterByUsableAreaMinValue'
-
-// Action types
-export const propertiesTypes = {
-  PROPERTIES_LOADED: 'PROPERTIES_LOADED',
-  PROPERTIES_ERROR: 'PROPERTIES_ERROR'
-}
+import {
+  filterInvalidLatLon,
+  filterByUsableAreaMinValue,
+  filterByCondominiumMaxValue
+} from '../utils'
 
 // Helpers
 const processAllProperties = flow([
@@ -17,9 +14,22 @@ const processAllProperties = flow([
 ])
 
 const processZapIds = flow([
+  filterInvalidLatLon,
   filterByUsableAreaMinValue(3500),
   properties => properties.map(({ id }) => id)
 ])
+
+const processVivaRealIds = flow([
+  filterInvalidLatLon,
+  filterByCondominiumMaxValue(30),
+  properties => properties.map(({ id }) => id)
+])
+
+// Action types
+export const propertiesTypes = {
+  PROPERTIES_LOADED: 'PROPERTIES_LOADED',
+  PROPERTIES_ERROR: 'PROPERTIES_ERROR'
+}
 
 // Reducer
 export const propertiesInitialState = {
@@ -41,7 +51,7 @@ const propertiesReducer = (state, { type, data }) => {
         data: {
           byId: processAllProperties(data),
           zapIds: processZapIds(data),
-          vivaRealIds: []
+          vivaRealIds: processVivaRealIds(data)
         }
       }
     case propertiesTypes.PROPERTIES_ERROR:

@@ -13,7 +13,10 @@ describe('Filter by usable area min value', () => {
       }
     ]
 
-    expect(filterByUsableAreaMinValue(3500)(data).length).toEqual(1)
+    const processed = filterByUsableAreaMinValue(3500)(data)
+
+    expect(processed.length).toEqual(1)
+    expect(processed[0].pricingInfos.price).toEqual(data[0].pricingInfos.price)
   })
 
   it('does not filter properties for rental', () => {
