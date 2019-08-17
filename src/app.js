@@ -7,7 +7,7 @@ import propertiesReducer, {
 } from './store/properties'
 
 const App = () => {
-  const [, dispatch] = useThunkReducer(
+  const [data, dispatch] = useThunkReducer(
     propertiesReducer,
     propertiesInitialState
   )
@@ -15,6 +15,8 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchProperties())
   }, [])
+
+  console.log(data)
 
   return <h1>App loaded</h1>
 }

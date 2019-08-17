@@ -4,7 +4,10 @@ import { flow, keyBy } from 'lodash'
 import {
   filterInvalidLatLon,
   filterByUsableAreaMinValue,
-  filterByCondominiumMaxValue
+  filterByCondominiumMaxValue,
+  filterByMinRentalValue,
+  filterByMinSaleValue,
+  filterByMaxRentalValue
 } from '../utils'
 
 // Helpers
@@ -16,12 +19,15 @@ const processAllProperties = flow([
 const processZapIds = flow([
   filterInvalidLatLon,
   filterByUsableAreaMinValue(3500),
+  filterByMinRentalValue(3500),
+  filterByMinSaleValue(600000, 10),
   properties => properties.map(({ id }) => id)
 ])
 
 const processVivaRealIds = flow([
   filterInvalidLatLon,
   filterByCondominiumMaxValue(30),
+  filterByMaxRentalValue(4000, 50),
   properties => properties.map(({ id }) => id)
 ])
 

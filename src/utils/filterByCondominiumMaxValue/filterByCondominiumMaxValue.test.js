@@ -1,7 +1,7 @@
 import filterByCondominiumMaxValue from './filterByCondominiumMaxValue'
 
 describe('Filter by condominium max value', () => {
-  it('filter properties for rental with condo fee value greater than specified', () => {
+  it('filter properties with condominium fee value greater than the specified', () => {
     const data = [
       {
         pricingInfos: {
