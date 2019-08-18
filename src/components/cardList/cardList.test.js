@@ -4,8 +4,8 @@ import { HashRouter as Router } from 'react-router-dom'
 
 import CardList from './cardList'
 
-describe('Home', () => {
-  it('rendirects to vivaReal', () => {
+describe('Card List', () => {
+  it('render a list of cards', () => {
     const { container } = render(
       <Router>
         <CardList
