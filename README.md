@@ -1,6 +1,6 @@
 Grupo Zap Engineering Test
 ====================
-![Coverage badge](badges/badge-statements.svg?raw=true "Coverage")
+![Coverage badge](badges/badge-statements.svg "Coverage")
 
 An app using [React](https://pt-br.reactjs.org/), [Webpack](https://webpack.js.org/) for bundle and server, [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) for testing, [Styled Components](https://www.styled-components.com/) for CSS in JS and [Eslint](https://eslint.org/) for linting.
 
