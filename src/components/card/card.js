@@ -25,8 +25,8 @@ const Card = ({
   }, [])
 
   return (
-    <Wrapper onClick={handleClick}>
-      <Content>
+    <Wrapper>
+      <Content role="button" onClick={handleClick}>
         <ImageWrapper>
           <img src={images[0]} alt="Imagem do imóvel" />
         </ImageWrapper>
@@ -56,7 +56,7 @@ Card.propTypes = {
   }).isRequired
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.a`
   padding: 10px;
   box-sizing: border-box;
 `
@@ -94,6 +94,7 @@ const ImageWrapper = styled.div`
 
   img {
     height: 100%;
+    vertical-align: middle;
     position: absolute;
     left: 50%;
     top: 50%;

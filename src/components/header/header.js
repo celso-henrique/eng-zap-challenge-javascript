@@ -17,7 +17,7 @@ const Header = () => (
   </Wrapper>
 )
 
-const Wrapper = styled.header`
+const Wrapper = styled.nav`
   background-color: #4fbfa5;
   color: #fff;
   display: flex;
