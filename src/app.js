@@ -27,16 +27,14 @@ const App = () => {
   }, [])
 
   return (
-    <>
+    <Router>
       <GlobalStyle />
-      <Router>
-        <Header />
-        <Switch>
-          <Route path="/detalhes/:id" component={RenderDetails} />
-          <Route path="/" component={RenderHome} />
-        </Switch>
-      </Router>
-    </>
+      <Header />
+      <Switch>
+        <Route path="/detalhes/:id" component={RenderDetails} />
+        <Route path="/" component={RenderHome} />
+      </Switch>
+    </Router>
   )
 }
 

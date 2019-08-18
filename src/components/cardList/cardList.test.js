@@ -10,7 +10,10 @@ describe('Home', () => {
       <Router>
         <CardList
           ids={['123', '456']}
-          properties={{ '123': { id: '123' }, 456: { id: '456' } }}
+          properties={{
+            123: { id: '123', pricingInfos: {}, images: [] },
+            456: { id: '456', pricingInfos: {}, images: [] }
+          }}
         />
       </Router>
     )

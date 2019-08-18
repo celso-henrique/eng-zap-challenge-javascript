@@ -21,7 +21,7 @@ const Wrapper = styled.header`
   background-color: #4fbfa5;
   color: #fff;
   display: flex;
-  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.02);
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.04);
 
   img {
     width: 200px;

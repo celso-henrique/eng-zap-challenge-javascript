@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { chunk } from 'lodash'
-import { objectOf, object, string, arrayOf } from 'prop-types'
+import {
+  objectOf, object, string, arrayOf
+} from 'prop-types'
+
+import Card from '../card'
 
 const CardList = ({ properties, ids }) => {
-  const [activePage, setActivePage] = useState(0)
+  const [activePage] = useState(0)
   const pagesIds = chunk(ids, 20)
 
   if (pagesIds[activePage]) {
@@ -13,7 +17,7 @@ const CardList = ({ properties, ids }) => {
         {pagesIds[activePage].map(id => {
           const property = properties[id]
 
-          return <div key={id}>{property.id}</div>
+          return <Card key={id} property={property} />
         })}
       </Wrapper>
     )

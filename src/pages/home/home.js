@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, Switch } from 'react-router-dom'
 import { shape, object, array } from 'prop-types'
 
 import { CardList } from '../../components'
@@ -9,17 +9,18 @@ const Home = ({ data: { byId, vivaRealIds, zapIds } }) => {
     () => <CardList properties={byId} ids={vivaRealIds} />,
     [vivaRealIds, byId]
   )
+
   const RenderZap = useCallback(
     () => <CardList properties={byId} ids={zapIds} />,
     [zapIds, byId]
   )
 
   return (
-    <>
-      <Redirect from="/" to="/vivaReal" />
+    <Switch>
       <Route path="/vivaReal" component={RenderVivaReal} />
       <Route path="/zap" component={RenderZap} />
-    </>
+      <Redirect exact from="/" to="/vivaReal" />
+    </Switch>
   )
 }
 
