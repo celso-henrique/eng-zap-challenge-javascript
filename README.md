@@ -54,4 +54,4 @@ Using [TravisCI](https://travis-ci.org/) you can create a pipeline from this rep
 
 ![Deploy image](images/deploy.png "Deploy image")
 
-Just set this keys into your TravisCI pipeline: `AWS_ACCESS_ID`, `AWS_SECRET_ID` (you can get then from `IAM` service, give the `AmazonS3FullAccess` and `CloudFrontFullAccess` to the user), `S3_BUCKET` (bucket name) and `CF_ID`(your CloudFront id) and use this repository as the source. 
+Just set this keys into your TravisCI pipeline: `AWS_ACCESS_ID`, `AWS_SECRET_ID` (you can get then from `IAM` service, please give the `AmazonS3FullAccess` and `CloudFrontFullAccess` to the user), `S3_BUCKET` (bucket name) and `CF_ID`(your CloudFront id) and use this repository as the source. 
