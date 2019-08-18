@@ -20,6 +20,11 @@
   "homepage": "https://github.com/celso-henrique/eng-zap-challenge-javascript#readme",
   "jest": {
     "testRegex": "(.*\\.(test|spec))\\.(js|jsx)$",
+     "coverageReporters": [
+      "json-summary", 
+      "text",
+      "lcov"
+     ],
     "moduleFileExtensions": [
       "js",
       "json",
