@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { chunk } from 'lodash'
 import {
   objectOf, object, string, arrayOf
 } from 'prop-types'
@@ -8,22 +7,30 @@ import {
 import Card from '../card'
 
 const CardList = ({ properties, ids }) => {
-  const [activePage] = useState(0)
-  const pagesIds = chunk(ids, 20)
+  const [activePage, setActivePage] = useState(1)
+  const items = ids.slice(0, activePage * 20)
 
-  if (pagesIds[activePage]) {
-    return (
-      <Wrapper>
-        {pagesIds[activePage].map(id => {
-          const property = properties[id]
+  const handleScroll = () => {
+    const scrollPos = window.innerHeight + document.documentElement.scrollTop
+    const pageEnd = document.documentElement.offsetHeight
 
-          return <Card key={id} property={property} />
-        })}
-      </Wrapper>
-    )
+    if (scrollPos === pageEnd && items.length !== ids.length) {
+      setActivePage(activePage + 1)
+    }
   }
 
-  return null
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [items])
+
+  return (
+    <Wrapper>
+      {items.map(id => (
+        <Card key={id} property={properties[id]} />
+      ))}
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
