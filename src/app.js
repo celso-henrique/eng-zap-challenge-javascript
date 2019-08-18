@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import useThunkReducer from 'react-hook-thunk-reducer'
-import { HashRouter as Router, Route } from 'react-router-dom'
 
 import propertiesReducer, {
   fetchProperties,
@@ -8,9 +8,10 @@ import propertiesReducer, {
 } from './store/properties'
 
 import { Home, Details } from './pages'
+import { GlobalStyle, Header } from './components'
 
 const App = () => {
-  const [data, dispatch] = useThunkReducer(
+  const [{ data }, dispatch] = useThunkReducer(
     propertiesReducer,
     propertiesInitialState
   )
@@ -26,10 +27,16 @@ const App = () => {
   }, [])
 
   return (
-    <Router>
-      <Route exact path="/" component={RenderHome} />
-      <Route path="/detalhes/:id" component={RenderDetails} />
-    </Router>
+    <>
+      <GlobalStyle />
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/detalhes/:id" component={RenderDetails} />
+          <Route path="/" component={RenderHome} />
+        </Switch>
+      </Router>
+    </>
   )
 }
 
