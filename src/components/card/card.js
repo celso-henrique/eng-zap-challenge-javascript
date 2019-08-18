@@ -5,6 +5,8 @@ import {
   shape, object, array, number, func
 } from 'prop-types'
 
+import { formatCurrency } from '../../utils'
+
 const Card = ({
   history,
   property: {
@@ -18,10 +20,6 @@ const Card = ({
   }
 }) => {
   const type = businessType === 'RENTAL' ? 'aluguel' : 'venda'
-  const formatedPrice = parseFloat(price).toLocaleString('pt-br', {
-    style: 'currency',
-    currency: 'BRL'
-  })
   const handleClick = useCallback(() => {
     history.push(`/detalhes/${id}`)
   }, [])
@@ -37,7 +35,7 @@ const Card = ({
           <p>
             {`${bedrooms} quartos | ${bathrooms} banheiros | ${parkingSpaces} vagas | ${usableAreas} m2`}
           </p>
-          <p>{formatedPrice}</p>
+          <p>{formatCurrency(price)}</p>
         </Infos>
       </Content>
     </Wrapper>

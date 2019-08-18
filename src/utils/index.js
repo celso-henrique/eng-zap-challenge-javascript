@@ -6,6 +6,7 @@ import filterByMinSaleValue from './filterByMinSaleValue'
 import filterByMaxSaleValue from './filterByMaxSaleValue'
 import filterByMaxRentalValue from './filterByMaxRentalValue'
 import isInBoundingBox from './isInBoundingBox'
+import formatCurrency from './formatCurrency'
 
 export {
   filterInvalidLatLon,
@@ -15,5 +16,6 @@ export {
   filterByMinSaleValue,
   filterByMaxSaleValue,
   filterByMaxRentalValue,
-  isInBoundingBox
+  isInBoundingBox,
+  formatCurrency
 }
